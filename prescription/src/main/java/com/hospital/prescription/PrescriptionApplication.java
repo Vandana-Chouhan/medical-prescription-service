@@ -1,3 +1,4 @@
+
 package com.hospital.prescription;
 
 import org.springframework.boot.SpringApplication;

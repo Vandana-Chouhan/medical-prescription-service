@@ -6,17 +6,18 @@ import com.hospital.prescription.exception.PrescriptionItemNotFoundException;
 import com.hospital.prescription.repository.PrescriptionItemRepository;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 public class PrescriptionItemServiceImpl implements PrescriptionItemService {
-
-    private final PrescriptionItemRepository prescriptionItemRepository;
+    @Autowired
+    private PrescriptionItemRepository prescriptionItemRepository;
 
     @Override
     public PrescriptionItem addItem(PrescriptionItemDTO dto) {
@@ -26,9 +27,9 @@ public class PrescriptionItemServiceImpl implements PrescriptionItemService {
         item.setMedicineName(dto.getMedicineName());
         item.setDosage(dto.getDosage());
         item.setFrequency(dto.getFrequency());
+        item.setQuantity(dto.getQuantity());
         item.setDuration(dto.getDuration());
         item.setInstructions(dto.getInstructions());
-
         return prescriptionItemRepository.save(item);
     }
 
@@ -47,6 +48,7 @@ public class PrescriptionItemServiceImpl implements PrescriptionItemService {
         item.setMedicineName(dto.getMedicineName());
         item.setDosage(dto.getDosage());
         item.setFrequency(dto.getFrequency());
+        item.setQuantity(dto.getQuantity());
         item.setDuration(dto.getDuration());
         item.setInstructions(dto.getInstructions());
 

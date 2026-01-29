@@ -1,5 +1,6 @@
 package com.hospital.prescription.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 
 import lombok.*;
@@ -22,6 +23,8 @@ public class PrescriptionItemDTO {
 
 	    @Size(max = 50, message = "Frequency must not exceed 50 characters")
 	    private String frequency;
+	    
+	    private Integer quantity;
 
 	    @Size(max = 50, message = "Duration must not exceed 50 characters")
 	    private String duration;

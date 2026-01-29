@@ -33,6 +33,9 @@ public class PrescriptionItem {
 
     @Column(name = "duration", length = 50)
     private String duration;
+    
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
     @Column(name = "instructions", length = 255)
     private String instructions;
