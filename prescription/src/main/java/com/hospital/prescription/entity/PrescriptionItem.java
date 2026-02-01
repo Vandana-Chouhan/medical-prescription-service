@@ -40,9 +40,21 @@ public class PrescriptionItem {
     @Column(name = "instructions", length = 255)
     private String instructions;
 
-    @Column(name = "created_at",insertable = false, updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
     
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+    
+    // Set createdAt automatically on INSERT
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = null; // or LocalDateTime.now() if you want both same
+    }
+    //Set updatedAt automatically on UPDATE
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }
